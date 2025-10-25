@@ -56,7 +56,7 @@ function LandingPage() {
                     <div className="flex items-center bg-white/95 pr-3">
                       <button
                         type="submit"
-                        className="h-12 md:h-14 px-6 md:px-8 bg-terracotta-500 hover:bg-terracotta-600 text-white font-semibold rounded-lg text-base transition-all duration-200 shadow-md hover:shadow-lg"
+                        className="h-12 md:h-14 px-6 md:px-8 bg-terracotta-500 hover:bg-terracotta-600 text-gray-900 cursor-pointer font-semibold rounded-lg text-base transition-all duration-200 shadow-md hover:shadow-lg"
                       >
                         Search
                       </button>
@@ -150,7 +150,7 @@ function LandingPage() {
           </p>
           <Link
             to="/discover"
-            className="mt-10 inline-flex items-center justify-center px-8 h-14 bg-terracotta-500 hover:bg-terracotta-600 text-white font-semibold rounded-xl text-lg transition-all duration-200 shadow-md hover:shadow-warm hover:-translate-y-0.5"
+            className="mt-10 inline-flex items-center justify-center px-8 h-14 bg-terracotta-500 hover:bg-terracotta-600 text-gray-900 font-semibold rounded-xl text-lg transition-all duration-200 shadow-md hover:shadow-warm hover:-translate-y-0.5"
           >
             Explore All Destinations
           </Link>

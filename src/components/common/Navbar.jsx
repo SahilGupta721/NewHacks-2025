@@ -51,7 +51,7 @@ function Navbar() {
             <button className="hidden sm:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-transparent text-gray-700 text-sm font-semibold leading-normal hover:bg-sand-100 transition-colors">
               <span className="truncate">Sign In</span>
             </button>
-            <button className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-terracotta-500 text-white text-sm font-semibold leading-normal hover:bg-terracotta-600 transition-all shadow-sm hover:shadow-md">
+            <button className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-terracotta-500 text-gray-700 text-sm font-semibold leading-normal hover:bg-terracotta-600 transition-all shadow-sm hover:shadow-md">
               <span className="truncate">Sign Up</span>
             </button>
           </div>
