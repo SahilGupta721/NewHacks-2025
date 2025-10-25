@@ -111,17 +111,23 @@ function DiscoverPage() {
                     Price Range
                   </h3>
                   <div className="space-y-4">
-                    <input
-                      type="range"
-                      min="0"
-                      max="500"
-                      value={priceRange[1]}
-                      onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
-                      className="w-full h-2 bg-sand-200 rounded-lg appearance-none cursor-pointer accent-terracotta-500"
-                    />
-                    <div className="flex items-center justify-between text-sm text-gray-600">
-                      <span>${priceRange[0]}</span>
-                      <span>${priceRange[1]}</span>
+                    <div className="relative">
+                      <input
+                        type="range"
+                        min="0"
+                        max="500"
+                        step="10"
+                        value={priceRange[1]}
+                        onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
+                        className="w-full h-2 rounded-lg appearance-none cursor-pointer price-range-slider"
+                        style={{
+                          background: `linear-gradient(to right, #C97C5D 0%, #C97C5D ${(priceRange[1] / 500) * 100}%, #F2E8D5 ${(priceRange[1] / 500) * 100}%, #F2E8D5 100%)`
+                        }}
+                      />
+                    </div>
+                    <div className="flex items-center justify-between text-sm font-medium">
+                      <span className="text-gray-700">${priceRange[0]}</span>
+                      <span className="text-terracotta-600">${priceRange[1]}</span>
                     </div>
                   </div>
                 </div>
@@ -131,18 +137,21 @@ function DiscoverPage() {
                   <h3 className="font-heading text-lg font-bold text-gray-900 mb-4">
                     Artisans
                   </h3>
-                  <select
-                    value={selectedArtisan}
-                    onChange={(e) => setSelectedArtisan(e.target.value)}
-                    className="w-full px-4 py-2 border border-sand-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracotta-400 text-sm"
-                  >
-                    <option value="all">All Artisans</option>
-                    {artisans.map(artisan => (
-                      <option key={artisan.id} value={artisan.id}>
-                        {artisan.name}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={selectedArtisan}
+                      onChange={(e) => setSelectedArtisan(e.target.value)}
+                      className="w-full px-4 py-3 border-2 border-sand-200 rounded-lg focus:outline-none focus:border-terracotta-400 focus:ring-2 focus:ring-terracotta-100 text-sm font-medium text-gray-900 bg-white hover:border-terracotta-300 transition-colors cursor-pointer appearance-none"
+                      style={{ backgroundImage: "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23C97C5D' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e\")", backgroundPosition: "right 0.5rem center", backgroundRepeat: "no-repeat", backgroundSize: "1.5em 1.5em", paddingRight: "2.5rem" }}
+                    >
+                      <option value="all" className="text-gray-900 bg-white">All Artisans</option>
+                      {artisans.map(artisan => (
+                        <option key={artisan.id} value={artisan.id} className="text-gray-900 bg-white">
+                          {artisan.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
               </div>
             </aside>
