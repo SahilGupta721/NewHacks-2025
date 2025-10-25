@@ -7,11 +7,18 @@ import ArtisanProfilePage from './pages/ArtisanProfilePage';
 import CartPage from './pages/CartPage';
 import MapPage from './pages/MapPage';
 import StoriesPage from './pages/StoriesPage';
+import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
 
 function App() {
   return (
     <Router>
       <Routes>
+        {/* Auth routes - without MainLayout */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+
+        {/* Main app routes - with MainLayout */}
         <Route path="/" element={<MainLayout />}>
           <Route index element={<LandingPage />} />
           <Route path="/discover" element={<DiscoverPage />} />
