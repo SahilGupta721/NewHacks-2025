@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  color: #111827;
+}
+
+p {
+  line-height: 1.625;
+}
+
+/* Gradient Utilities */
+.gradient-terracotta {
+  background: linear-gradient(135deg, #C97C5D 0%, #e59f88 100%);
+}
+
+.gradient-primary {
+  background: linear-gradient(135deg, #ec6d13 0%, #f58d52 100%);
+}
