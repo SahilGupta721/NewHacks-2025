@@ -11,6 +11,7 @@ import MapPage from './pages/MapPage';
 import StoriesPage from './pages/StoriesPage';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
+import SupportPage from './pages/SupportPage';
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
 
@@ -23,6 +24,7 @@ function App() {
             {/* Auth routes - without MainLayout */}
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/support" element={<SupportPage />} />
 
             {/* Main app routes - with MainLayout */}
             <Route path="/" element={<MainLayout />}>

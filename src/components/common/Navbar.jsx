@@ -11,6 +11,7 @@ function Navbar() {
     { path: '/discover', label: 'Destinations' },
     { path: '/map', label: 'Artisans' },
     { path: '/stories', label: 'About' },
+    { path: '/support', label: 'Contact' },
   ];
 
   const isActive = (path) => location.pathname === path;
