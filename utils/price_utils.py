@@ -1,6 +1,13 @@
-@app.get("/price-intelligence/{product_id}")
-def price_intelligence(product_id: str):
-    # Fetch all prices for the product
+# utils/price_utils.py
+from database import prices_col, shops_col
+
+def get_price_intelligence(product_id: str, threshold: float = 0.2):
+    """
+    Returns price intelligence for a product:
+    - Median price
+    - Whether current price is overpriced
+    - Alternative cheaper shops
+    """
     price_docs = list(prices_col.find({"product_id": product_id}))
     if not price_docs:
         return {"error": "No price data available"}
@@ -9,11 +16,10 @@ def price_intelligence(product_id: str):
     median_price = sorted(prices)[len(prices)//2]
     current_price = prices[0]  # example vendor
 
-    # Overpriced check
-    threshold = 0.2
+    # Check if overpriced
     status = "Overpriced" if current_price > median_price * (1 + threshold) else "Fair"
 
-    # Alternatives
+    # Find cheaper alternatives
     alternatives = []
     for p in price_docs:
         if p['price'] < current_price:
