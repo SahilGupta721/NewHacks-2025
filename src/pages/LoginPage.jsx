@@ -1,8 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, ShoppingBag } from 'lucide-react';
+import { useGoogleLogin } from '@react-oauth/google';
+import { useAuth } from '../context/AuthContext';
 
 function LoginPage() {
+  const navigate = useNavigate();
+  const { login } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
@@ -11,18 +15,62 @@ function LoginPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: Implement login logic
+    // TODO: Implement login logic with backend
     console.log('Login:', formData);
+
+    // Temporary: Mock user login
+    const user = {
+      id: Date.now(),
+      name: formData.email.split('@')[0],
+      email: formData.email,
+      avatar: null,
+      provider: 'email'
+    };
+    login(user);
+    navigate('/');
   };
 
-  const handleGoogleLogin = () => {
-    // TODO: Implement Google OAuth
-    console.log('Google login');
-  };
+  const handleGoogleLogin = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      try {
+        // Get user info from Google
+        const userInfoResponse = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+          headers: {
+            Authorization: `Bearer ${tokenResponse.access_token}`,
+          },
+        });
+        const userInfo = await userInfoResponse.json();
+
+        // Create user object
+        const user = {
+          id: userInfo.sub,
+          name: userInfo.name,
+          email: userInfo.email,
+          avatar: userInfo.picture,
+          provider: 'google'
+        };
+
+        // TODO: Send to your backend to create/login user
+        console.log('Google login successful:', user);
+
+        // Login user
+        login(user);
+        navigate('/');
+      } catch (error) {
+        console.error('Google login error:', error);
+        alert('Failed to login with Google. Please try again.');
+      }
+    },
+    onError: (error) => {
+      console.error('Google OAuth error:', error);
+      alert('Failed to login with Google. Please try again.');
+    }
+  });
 
   const handleFacebookLogin = () => {
     // TODO: Implement Facebook OAuth
     console.log('Facebook login');
+    alert('Facebook login coming soon!');
   };
 
   return (
