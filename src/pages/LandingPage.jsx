@@ -26,16 +26,16 @@ function LandingPage() {
               <div
                 className="min-h-[520px] flex flex-col gap-8 bg-cover bg-center bg-no-repeat rounded-2xl items-center justify-center p-10 md:p-16"
                 style={{
-                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=1600")`
+                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=1600")`
                 }}
               >
-                <div className="flex flex-col gap-5 text-center text-white max-w-3xl">
-                  <h1 className="font-heading text-5xl md:text-6xl font-bold leading-tight tracking-tight">
+                <div className="flex flex-col gap-5 text-center max-w-3xl">
+                  <h1 className="font-heading text-5xl md:text-6xl font-bold leading-tight tracking-tight text-white drop-shadow-lg">
                     Discover the Soul of Your
                     <br />
                     Destination
                   </h1>
-                  <p className="text-xl md:text-2xl font-light leading-relaxed text-sand-100">
+                  <p className="text-xl md:text-2xl font-light leading-relaxed text-white drop-shadow-md">
                     Bring Home a Piece of Culture
                   </p>
                 </div>
@@ -140,11 +140,11 @@ function LandingPage() {
 
       {/* CTA Section */}
       <section className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex justify-center py-12 md:py-16">
-        <div className="w-full max-w-[1280px] flex flex-col items-center text-center bg-gradient-to-br from-terracotta-50 to-sand-100 rounded-2xl p-10 md:p-16 shadow-soft-lg">
+        <div className="w-full max-w-[1280px] flex flex-col items-center text-center bg-gradient-to-br from-terracotta-50 via-sand-50 to-terracotta-100/30 rounded-2xl p-10 md:p-16 shadow-soft-lg border border-terracotta-100">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
             Support Local Artisans, Preserve Culture
           </h2>
-          <p className="mt-6 max-w-2xl text-gray-700 text-lg md:text-xl leading-relaxed">
+          <p className="mt-6 max-w-2xl text-gray-800 text-lg md:text-xl leading-relaxed font-medium">
             Every purchase on CulturaCart directly supports the talented artisans who keep
             their cultural heritage alive. Travel with purpose and bring home a story.
           </p>
