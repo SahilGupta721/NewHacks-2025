@@ -83,69 +83,82 @@ function ArtisanProfilePage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Cover Photo with Avatar Overlay */}
-      <div className="relative">
+      <div className="relative bg-white">
         {/* Cover Photo */}
-        <div className="h-64 md:h-80 w-full overflow-hidden bg-sand-200">
+        <div className="h-72 md:h-96 w-full overflow-hidden bg-sand-200">
           <img
             src={artisan.coverPhoto}
             alt={`${artisan.name} cover`}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
         </div>
 
         {/* Content Container */}
         <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
           <div className="max-w-[1280px] mx-auto">
+            {/* Breadcrumb */}
+            <nav className="flex items-center gap-2 text-sm text-gray-600 pt-6 pb-4">
+              <Link to="/" className="hover:text-terracotta-600">Home</Link>
+              <span>/</span>
+              <Link to="/discover" className="hover:text-terracotta-600">Artisans</Link>
+              <span>/</span>
+              <span className="text-gray-900">{artisan.name}</span>
+            </nav>
+
             {/* Avatar and Info Section */}
-            <div className="relative -mt-16 md:-mt-20 mb-8">
-              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <div className="relative -mt-32 md:-mt-40 mb-12 pb-8 border-b border-sand-200">
+              <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
                 {/* Left: Avatar + Info */}
-                <div className="flex flex-col sm:flex-row items-center sm:items-end gap-6">
+                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
                   {/* Avatar */}
-                  <div className="relative">
-                    <img
-                      src={artisan.avatar}
-                      alt={artisan.name}
-                      className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover ring-4 ring-background shadow-warm"
-                    />
-                    {artisan.verified && (
-                      <div className="absolute bottom-2 right-2 w-8 h-8 bg-gold-500 rounded-full flex items-center justify-center ring-4 ring-background">
-                        <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                      </div>
-                    )}
+                  <div className="relative flex-shrink-0">
+                    <div className="relative">
+                      <img
+                        src={artisan.avatar}
+                        alt={artisan.name}
+                        className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover ring-8 ring-white shadow-xl"
+                      />
+                      {artisan.verified && (
+                        <div className="absolute bottom-3 right-3 w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center ring-4 ring-white shadow-lg">
+                          <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
                   </div>
 
                   {/* Name & Location */}
-                  <div className="text-center sm:text-left mb-4 sm:mb-2">
-                    <h1 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 mb-2">
+                  <div className="text-center sm:text-left pt-0 sm:pt-8">
+                    <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3">
                       {artisan.name}
                     </h1>
-                    <p className="text-lg text-gray-600 flex items-center gap-2 justify-center sm:justify-start mb-1">
-                      <MapPin size={18} className="text-terracotta-500" />
-                      {artisan.location.city}, {artisan.location.country}
-                    </p>
-                    <p className="text-md text-terracotta-600 font-semibold">
-                      {artisan.craftSpecialty}
-                    </p>
+                    <div className="flex flex-col gap-2">
+                      <p className="text-xl text-gray-600 flex items-center gap-2 justify-center sm:justify-start">
+                        <MapPin size={20} className="text-terracotta-500" />
+                        {artisan.location.city}, {artisan.location.country}
+                      </p>
+                      <p className="text-lg text-terracotta-600 font-semibold">
+                        {artisan.craftSpecialty}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
                 {/* Right: Action Buttons */}
-                <div className="flex gap-3 justify-center md:justify-end">
+                <div className="flex gap-3 justify-center lg:justify-end lg:pb-8">
                   <button
                     onClick={() => setIsFollowing(!isFollowing)}
-                    className={`px-6 py-3 rounded-xl font-semibold transition-all ${
+                    className={`px-8 py-3 rounded-xl font-semibold transition-all shadow-md hover:shadow-lg ${
                       isFollowing
                         ? 'bg-terracotta-500 text-white hover:bg-terracotta-600'
-                        : 'border-2 border-terracotta-500 text-terracotta-600 hover:bg-terracotta-50'
+                        : 'border-2 border-terracotta-500 text-terracotta-600 hover:bg-terracotta-50 bg-white'
                     }`}
                   >
                     {isFollowing ? 'Following' : 'Follow'}
                   </button>
-                  <button className="px-6 py-3 bg-terracotta-500 text-white rounded-xl font-semibold hover:bg-terracotta-600 transition-all shadow-md hover:shadow-warm flex items-center gap-2">
+                  <button className="px-8 py-3 bg-terracotta-500 text-white rounded-xl font-semibold hover:bg-terracotta-600 transition-all shadow-md hover:shadow-warm flex items-center gap-2">
                     <MessageCircle size={18} />
                     Message
                   </button>
@@ -381,31 +394,33 @@ function ArtisanProfilePage() {
             </div>
 
             {/* From Our Community (Testimonials) */}
-            <section className="mb-16">
-              <h2 className="font-heading text-3xl font-bold text-gray-900 mb-8">
-                From Our Community
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {testimonials.map(testimonial => (
-                  <div key={testimonial.id} className="bg-white rounded-xl p-6 shadow-soft">
-                    <div className="flex items-center gap-4 mb-4">
-                      <img
-                        src={testimonial.avatar}
-                        alt={testimonial.name}
-                        className="w-12 h-12 rounded-full object-cover"
-                      />
-                      <div>
-                        <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                        <div className="flex items-center gap-1">
-                          {[...Array(testimonial.rating)].map((_, i) => (
-                            <Star key={i} size={14} className="text-gold-500 fill-gold-500" />
-                          ))}
+            <section className="mb-16 -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-24 xl:-mx-40 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 py-16 bg-sand-50">
+              <div className="max-w-[1280px] mx-auto">
+                <h2 className="font-heading text-3xl font-bold text-gray-900 mb-8">
+                  From Our Community
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {testimonials.map(testimonial => (
+                    <div key={testimonial.id} className="bg-white rounded-xl p-6 shadow-soft hover:shadow-md transition-shadow">
+                      <div className="flex items-center gap-4 mb-4">
+                        <img
+                          src={testimonial.avatar}
+                          alt={testimonial.name}
+                          className="w-12 h-12 rounded-full object-cover ring-2 ring-sand-200"
+                        />
+                        <div>
+                          <p className="font-semibold text-gray-900">{testimonial.name}</p>
+                          <div className="flex items-center gap-1">
+                            {[...Array(testimonial.rating)].map((_, i) => (
+                              <Star key={i} size={14} className="text-gold-500 fill-gold-500" />
+                            ))}
+                          </div>
                         </div>
                       </div>
+                      <p className="text-gray-700 leading-relaxed">"{testimonial.text}"</p>
                     </div>
-                    <p className="text-gray-700 leading-relaxed">"{testimonial.text}"</p>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </section>
           </div>
