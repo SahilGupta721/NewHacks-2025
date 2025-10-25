@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, ShoppingBag } from 'lucide-react';
 import { useGoogleLogin } from '@react-oauth/google';
 import { useAuth } from '../context/AuthContext';
+import { initFacebookSDK, loginWithFacebook } from '../utils/facebook';
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -12,6 +13,13 @@ function LoginPage() {
     email: '',
     password: ''
   });
+
+  // Initialize Facebook SDK
+  useEffect(() => {
+    initFacebookSDK().catch((error) => {
+      console.error('Failed to initialize Facebook SDK:', error);
+    });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,10 +75,22 @@ function LoginPage() {
     }
   });
 
-  const handleFacebookLogin = () => {
-    // TODO: Implement Facebook OAuth
-    console.log('Facebook login');
-    alert('Facebook login coming soon!');
+  const handleFacebookLogin = async () => {
+    try {
+      const user = await loginWithFacebook();
+
+      // TODO: Send to your backend to create/login user
+      console.log('Facebook login successful:', user);
+
+      // Login user
+      login(user);
+      navigate('/');
+    } catch (error) {
+      console.error('Facebook login error:', error);
+      if (error.message !== 'Facebook login was cancelled or not authorized') {
+        alert('Failed to login with Facebook. Please try again.');
+      }
+    }
   };
 
   return (
@@ -166,7 +186,7 @@ function LoginPage() {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-lg bg-terracotta-500 py-3 px-4 text-sm font-semibold text-white shadow-md hover:bg-terracotta-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta-500 transition-colors cursor-pointer"
+                  className="flex w-full justify-center rounded-lg bg-terracotta-500 py-3 px-4 text-sm font-semibold text-gray-900 shadow-md hover:bg-terracotta-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta-500 transition-colors cursor-pointer"
                 >
                   Log In
                 </button>
@@ -180,7 +200,7 @@ function LoginPage() {
                   <div className="w-full border-t border-gray-300"></div>
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="bg-background px-4 text-gray-600 font-medium">or continue with</span>
+                  <span className="px-6 py-0.5 text-gray-600 font-medium" style={{ backgroundColor: '#FAF9F6' }}>or continue with</span>
                 </div>
               </div>
 
