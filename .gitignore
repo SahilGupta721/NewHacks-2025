@@ -1,0 +1,57 @@
+# ======================
+# Node / React / Vite
+# ======================
+node_modules/
+dist/
+.vite/
+.env
+.env.local
+.env.*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor / IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# ======================
+# Python / FastAPI
+# ======================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+pip-log.txt
+*.pyc
+
+# ======================
+# Misc / Build
+# ======================
+*.env
+*.local
+*.swp
