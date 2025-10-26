@@ -1,88 +1,20 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Search, Heart } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Heart } from 'lucide-react';
 import { destinations } from '../data/destinations';
 import { products } from '../data/products';
-import { useEffect } from 'react';
-
-const countries = [
-  { name: 'United States', code: 'US' },
-  { name: 'Canada', code: 'CA' },
-  { name: 'France', code: 'FR' },
-  { name: 'Italy', code: 'IT' },
-  { name: 'Japan', code: 'JP' },
-  { name: 'India', code: 'IN' },
-  { name: 'Mexico', code: 'MX' },
-  { name: 'United Kingdom', code: 'GB' },
-  { name: 'Germany', code: 'DE' },
-  { name: 'Spain', code: 'ES' },
-  { name: 'Australia', code: 'AU' },
-  { name: 'Brazil', code: 'BR' },
-  { name: 'China', code: 'CN' },
-  { name: 'South Korea', code: 'KR' },
-  { name: 'Russia', code: 'RU' },
-  { name: 'South Africa', code: 'ZA' },
-  { name: 'New Zealand', code: 'NZ' },
-  { name: 'Argentina', code: 'AR' },
-  { name: 'Netherlands', code: 'NL' },
-  { name: 'Sweden', code: 'SE' },
-  { name: 'Switzerland', code: 'CH' },
-  { name: 'Turkey', code: 'TR' },
-  { name: 'Saudi Arabia', code: 'SA' },
-  { name: 'United Arab Emirates', code: 'AE' },
-  { name: 'Singapore', code: 'SG' },
-  { name: 'Thailand', code: 'TH' },
-  { name: 'Malaysia', code: 'MY' },
-  { name: 'Philippines', code: 'PH' },
-  { name: 'Vietnam', code: 'VN' },
-  { name: 'Egypt', code: 'EG' },
-  { name: 'Nigeria', code: 'NG' },
-  { name: 'Pakistan', code: 'PK' },
-  { name: 'Bangladesh', code: 'BD' },
-  { name: 'Indonesia', code: 'ID' },
-  { name: 'Colombia', code: 'CO' },
-  { name: 'Chile', code: 'CL' },
-  { name: 'Portugal', code: 'PT' },
-  { name: 'Ireland', code: 'IE' },
-  { name: 'Norway', code: 'NO' },
-  { name: 'Finland', code: 'FI' },
-];
 
 function LandingPage() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [suggestions, setSuggestions] = useState([]);
-  //const [wishlist, setWishlist] = useState([]);
   const [wishlist, setWishlist] = useState(() => {
     return JSON.parse(localStorage.getItem('wishlist')) || [];
   });
 
-  const navigate = useNavigate();
   useEffect(() => {
     localStorage.setItem('wishlist', JSON.stringify(wishlist));
   }, [wishlist]);
 
   const featuredDestinations = destinations.filter(d => d.featured);
   const featuredProducts = products.filter(p => p.featured).slice(0, 4);
-
-  const handleSearchChange = (e) => {
-    const value = e.target.value;
-    setSearchQuery(value);
-
-    if (value.length > 0) {
-      const filtered = countries.filter(c =>
-        c.name.toLowerCase().includes(value.toLowerCase())
-      );
-      setSuggestions(filtered);
-    } else {
-      setSuggestions([]);
-    }
-  };
-
-  const handleSelectCountry = (countryCode) => {
-    setSearchQuery('');
-    setSuggestions([]);
-    navigate(`/discover?location=${countryCode}`);
-  };
 
   
   const toggleWishlist = (destinationId) => {
@@ -131,12 +63,12 @@ function LandingPage() {
             <div className="flex items-stretch p-4 gap-4">
               {featuredDestinations.map((destination) => (
                 <div key={destination.id} className="relative flex-shrink-0 w-64 flex flex-col gap-4 rounded-lg">
-                  <Link to={`/discover?location=${destination.slug}`} className="relative">
+                  <div className="relative">
                     <div
                       className="w-full aspect-video bg-center bg-no-repeat bg-cover rounded-lg"
                       style={{ backgroundImage: `url("${destination.image}")` }}
                     />
-                  </Link>
+                  </div>
 
                   {/* Heart Icon */}
                   <button

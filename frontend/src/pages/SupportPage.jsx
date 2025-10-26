@@ -250,7 +250,7 @@ IMPORTANT: ALWAYS use dash (-) for bullet points, never use asterisks (*) or oth
 **Guidelines:**
 - No emojis or exclamation overload.
 - Always balance culture + practicality.
-- If asked about hotels or booking, politely redirect to SophoTravel's Discover page.
+- If asked about hotels or booking, politely redirect users to consult with local travel resources.
 - Never provide medical or legal advice.
 - Encourage users to explore *authentically*, not superficially.`;
 

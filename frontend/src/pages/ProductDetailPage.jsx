@@ -18,8 +18,8 @@ function ProductDetailPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="font-heading text-3xl font-bold text-gray-900 mb-4">Product Not Found</h1>
-          <Link to="/discover" className="text-terracotta-600 hover:text-terracotta-700">
-            ← Back to Discover
+          <Link to="/" className="text-terracotta-600 hover:text-terracotta-700">
+            ← Back to Home
           </Link>
         </div>
       </div>
@@ -42,10 +42,6 @@ function ProductDetailPage() {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
             <Link to="/" className="hover:text-terracotta-600">Home</Link>
-            <span>/</span>
-            <Link to={`/discover?category=${product.category.slug}`} className="hover:text-terracotta-600">
-              {product.category.name}
-            </Link>
             <span>/</span>
             <span className="text-gray-900">{product.name}</span>
           </nav>

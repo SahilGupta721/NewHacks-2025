@@ -46,8 +46,8 @@ function ArtisanProfilePage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="font-heading text-3xl font-bold text-gray-900 mb-4">Artisan Not Found</h1>
-          <Link to="/discover" className="text-terracotta-600 hover:text-terracotta-700">
-            ← Back to Discover
+          <Link to="/" className="text-terracotta-600 hover:text-terracotta-700">
+            ← Back to Home
           </Link>
         </div>
       </div>
@@ -100,8 +100,6 @@ function ArtisanProfilePage() {
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-sm text-gray-600 pt-6 pb-4">
               <Link to="/" className="hover:text-terracotta-600">Home</Link>
-              <span>/</span>
-              <Link to="/discover" className="hover:text-terracotta-600">Artisans</Link>
               <span>/</span>
               <span className="text-gray-900">{artisan.name}</span>
             </nav>
@@ -272,14 +270,6 @@ function ArtisanProfilePage() {
                     <h2 className="font-heading text-3xl font-bold text-gray-900">
                       Featured Products
                     </h2>
-                    {artisanProducts.length > 6 && (
-                      <Link
-                        to={`/discover?artisan=${artisan.id}`}
-                        className="text-terracotta-600 hover:text-terracotta-700 font-semibold"
-                      >
-                        View All →
-                      </Link>
-                    )}
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

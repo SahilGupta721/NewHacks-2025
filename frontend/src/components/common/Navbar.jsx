@@ -8,8 +8,6 @@ function Navbar() {
   const { user, logout, isAuthenticated } = useAuth();
 
   const navLinks = [
-    { path: '/discover', label: 'Destinations' },
-    /*{ path: '/map', label: 'Artisans' },*/
     { path: '/stories', label: 'About' },
     { path: '/Support', label: 'Contact' },
   ];

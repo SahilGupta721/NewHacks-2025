@@ -145,7 +145,7 @@ function StoriesPage() {
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
                   <a
-                    href="/discover"
+                    href="/"
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-3.5 text-base font-semibold text-gray-900 shadow-lg hover:bg-gray-50 transition-all hover:scale-105"
                   >
                     Get Started
