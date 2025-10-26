@@ -38,17 +38,24 @@ function LandingPage() {
                 <div className="flex flex-col gap-6 text-center max-w-4xl relative z-10">
                   <h1 className="font-heading text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">
                     <span className="text-white drop-shadow-2xl">Discover the </span>
-                    <span className="bg-gradient-to-r from-terracotta-300 via-terracotta-400 to-sand-300 bg-clip-text text-transparent drop-shadow-2xl">
+                    <span className="drop-shadow-2xl" style={{
+                      background: 'linear-gradient(90deg, #f8b6a3 0%, #e59f88 50%, #f7f1e2 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text'
+                    }}>
                       Soul
                     </span>
                     <span className="text-white drop-shadow-2xl"> of Your</span>
                     <br />
-                    <span className="inline-block mt-2 px-8 py-2 bg-terracotta-500/90 backdrop-blur-sm text-white rounded-2xl shadow-2xl transform -rotate-1">
+                    <span className="inline-block mt-2 px-8 py-2 text-white rounded-2xl shadow-2xl transform -rotate-1" style={{
+                      backgroundColor: 'rgba(201, 124, 93, 0.9)'
+                    }}>
                       Destination
                     </span>
                   </h1>
                   <p className="text-2xl md:text-3xl font-medium leading-relaxed text-white drop-shadow-2xl mt-2">
-                    ✨ Bring Home a Piece of <span className="text-terracotta-200 font-bold">Culture</span>
+                    ✨ Bring Home a Piece of <span className="font-bold" style={{ color: '#fbd0c3' }}>Culture</span>
                   </p>
                 </div>
 
@@ -152,9 +159,10 @@ function LandingPage() {
 
       {/* CTA Section */}
       <section className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex justify-center py-12 md:py-16">
-        <div className="w-full max-w-[1280px] relative overflow-hidden rounded-3xl">
+        <div className="w-full max-w-[1280px] relative overflow-hidden rounded-3xl" style={{
+          background: 'linear-gradient(135deg, #b66748 0%, #C97C5D 50%, #974f38 100%)'
+        }}>
           {/* Background with Pattern */}
-          <div className="absolute inset-0 bg-gradient-to-br from-terracotta-600 via-terracotta-500 to-terracotta-700"></div>
           <div className="absolute inset-0 opacity-10" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
           }}></div>
