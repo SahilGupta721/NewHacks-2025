@@ -12,7 +12,7 @@ genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 router = APIRouter()
 
-@router.get("/destinations/{country_id}")
+@router.get("/culture/destinations/{country_id}")
 async def get_country_data(country_id: str):
     collection = db["destinations"]
     country_id = country_id.lower()
