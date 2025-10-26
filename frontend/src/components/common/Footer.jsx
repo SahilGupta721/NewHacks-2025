@@ -12,12 +12,12 @@ const Footer = () => {
                 <path clipRule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fillRule="evenodd" />
               </svg>
             </div>
-            <h2 className="font-heading text-xl font-bold">CulturaCart</h2>
+            <h2 className="font-heading text-xl font-bold">SophoTravel</h2>
           </Link>
 
           {/* Footer Links */}
           <div className="text-center md:text-right text-sm text-gray-600">
-            <p className="font-medium">&copy; {new Date().getFullYear()} CulturaCart. All Rights Reserved.</p>
+            <p className="font-medium">&copy; {new Date().getFullYear()} SophoTravel. All Rights Reserved.</p>
             <div className="flex justify-center md:justify-end gap-6 mt-3">
               <Link to="/terms" className="hover:text-terracotta-600 transition-colors font-medium">
                 Terms of Service

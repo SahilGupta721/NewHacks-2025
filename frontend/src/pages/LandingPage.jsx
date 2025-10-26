@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Search, Heart } from 'lucide-react';
 import { destinations } from '../data/destinations';
 import { products } from '../data/products';
+import { useEffect } from 'react';
 
 const countries = [
   { name: 'United States', code: 'US' },
@@ -50,8 +51,15 @@ const countries = [
 function LandingPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
-  const [wishlist, setWishlist] = useState([]);
+  //const [wishlist, setWishlist] = useState([]);
+  const [wishlist, setWishlist] = useState(() => {
+    return JSON.parse(localStorage.getItem('wishlist')) || [];
+  });
+
   const navigate = useNavigate();
+  useEffect(() => {
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+  }, [wishlist]);
 
   const featuredDestinations = destinations.filter(d => d.featured);
   const featuredProducts = products.filter(p => p.featured).slice(0, 4);
@@ -171,12 +179,18 @@ function LandingPage() {
                   );
                 })}
               </div>
+              <button
+                onClick={() => setWishlist([])}
+                className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+              >
+                Clear Wishlist
+              </button>
             </div>
           )}
         </div>
       </section>
 
-      {/* Featured Products Section */}
+      {/*
       <section className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex justify-center py-5">
         <div className="w-full max-w-[1280px]">
           <h2 className="text-gray-900 text-2xl font-bold px-4 pb-3 pt-5">
@@ -199,6 +213,8 @@ function LandingPage() {
           </div>
         </div>
       </section>
+      */}
+
     </div>
   );
 }
