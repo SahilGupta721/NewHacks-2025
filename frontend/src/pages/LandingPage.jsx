@@ -106,7 +106,7 @@ function LandingPage() {
               }}
             >
               <div className="flex flex-col gap-4 text-center text-white max-w-3xl">
-                <h1 className="text-4xl md:text-5xl font-black">
+                <h1 className="text-4xl md:text-5xl font-black-text">
                   Discover the Soul of Your Destination
                 </h1>
                 <h2 className="text-lg md:text-xl font-normal">
@@ -124,7 +124,7 @@ function LandingPage() {
       {/* Featured Destinations Section */}
       <section className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex justify-center py-5">
         <div className="w-full max-w-[1280px]">
-          <h2 className="text-gray-900 text-2xl font-bold px-4 pb-3 pt-5">
+          <h2 className="text-gray-900 text-2xl font-bold px-4 pb-3 pt-5 header-title">
             Destinations to Inspire You
           </h2>
           <div className="overflow-x-auto scrollbar-hide">
