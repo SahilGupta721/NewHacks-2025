@@ -76,20 +76,7 @@ function LandingPage() {
     navigate(`/discover?location=${countryCode}`);
   };
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      const country = countries.find(c =>
-        c.name.toLowerCase() === searchQuery.trim().toLowerCase()
-      );
-      if (country) {
-        navigate(`/discover?location=${country.code}`);
-      } else {
-        alert('Please select a valid country from the suggestions.');
-      }
-    }
-  };
-
+  
   const toggleWishlist = (destinationId) => {
     setWishlist(prev =>
       prev.includes(destinationId)
@@ -120,42 +107,7 @@ function LandingPage() {
               </div>
 
               {/* Search Bar */}
-              <form onSubmit={handleSearch} className="w-full max-w-[480px] mt-4 relative">
-                <div className="flex h-14 md:h-16 items-stretch rounded-lg shadow-lg overflow-hidden">
-                  <div className="flex bg-white items-center justify-center pl-4">
-                    <Search className="text-gray-500" size={20} />
-                  </div>
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={handleSearchChange}
-                    placeholder="Search for a country..."
-                    className="flex-1 bg-white text-gray-900 px-4 text-sm md:text-base focus:outline-none"
-                  />
-                  <div className="flex items-center bg-white pr-2">
-                    <button
-                      type="submit"
-                      className="h-10 md:h-12 px-4 md:px-5 bg-primary hover:bg-primary/90 text-white font-bold rounded-lg text-sm md:text-base transition-colors"
-                    >
-                      Search
-                    </button>
-                  </div>
-                </div>
-
-                {suggestions.length > 0 && (
-                  <ul className="absolute top-full left-0 right-0 bg-white shadow-md border mt-1 max-h-60 overflow-y-auto z-10 rounded-md">
-                    {suggestions.map(c => (
-                      <li
-                        key={c.code}
-                        onClick={() => handleSelectCountry(c.code)}
-                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                      >
-                        {c.name}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </form>
+              
             </div>
           </div>
         </div>
