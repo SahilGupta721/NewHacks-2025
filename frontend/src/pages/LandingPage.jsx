@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { Search, Heart } from 'lucide-react'; // Only icons you actually use
+import { Link } from 'react-router-dom';
+import { Search } from 'lucide-react';
 import { destinations } from '../data/destinations';
 import { products } from '../data/products';
 
