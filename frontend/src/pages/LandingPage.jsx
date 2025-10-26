@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Search } from 'lucide-react';
+import { Search, Heart } from 'lucide-react'; // Only icons you actually use
 import { destinations } from '../data/destinations';
 import { products } from '../data/products';
 
-// List of countries with their codes
+
 const countries = [
   { name: 'United States', code: 'US' },
   { name: 'Canada', code: 'CA' },
@@ -48,16 +48,15 @@ const countries = [
   { name: 'Finland', code: 'FI' },
 ];
 
-
 function LandingPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
   const navigate = useNavigate();
 
   const featuredDestinations = destinations.filter(d => d.featured);
   const featuredProducts = products.filter(p => p.featured).slice(0, 4);
 
-  // Update suggestions while typing
   const handleSearchChange = (e) => {
     const value = e.target.value;
     setSearchQuery(value);
@@ -72,14 +71,12 @@ function LandingPage() {
     }
   };
 
-  // When user selects a country from dropdown
   const handleSelectCountry = (countryCode) => {
     setSearchQuery('');
     setSuggestions([]);
     navigate(`/discover?location=${countryCode}`);
   };
 
-  // Handle form submit
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
@@ -92,6 +89,14 @@ function LandingPage() {
         alert('Please select a valid country from the suggestions.');
       }
     }
+  };
+
+  const toggleWishlist = (destinationId) => {
+    setWishlist(prev =>
+      prev.includes(destinationId)
+        ? prev.filter(id => id !== destinationId)
+        : [...prev, destinationId]
+    );
   };
 
   return (
@@ -132,7 +137,6 @@ function LandingPage() {
                   </div>
                 </div>
 
-                {/* Suggestions Dropdown */}
                 {suggestions.length > 0 && (
                   <ul className="absolute top-full left-0 right-0 bg-white shadow-md border mt-1 max-h-60 overflow-y-auto z-10 rounded-md">
                     {suggestions.map(c => (
@@ -159,18 +163,56 @@ function LandingPage() {
           <div className="overflow-x-auto scrollbar-hide">
             <div className="flex items-stretch p-4 gap-4">
               {featuredDestinations.map((destination) => (
-                <Link key={destination.id} to={`/discover?location=${destination.slug}`}
-                  className="flex-shrink-0 w-64 flex flex-col gap-4 rounded-lg transform transition-transform duration-300 hover:-translate-y-1">
-                  <div className="w-full aspect-video bg-center bg-no-repeat bg-cover rounded-lg"
-                       style={{ backgroundImage: `url("${destination.image}")` }} />
+                <div key={destination.id} className="relative flex-shrink-0 w-64 flex flex-col gap-4 rounded-lg">
+                  <Link to={`/discover?location=${destination.slug}`} className="relative">
+                    <div
+                      className="w-full aspect-video bg-center bg-no-repeat bg-cover rounded-lg"
+                      style={{ backgroundImage: `url("${destination.image}")` }}
+                    />
+                  </Link>
+
+                  {/* Heart Icon */}
+<button
+  onClick={() => toggleWishlist(destination.id)}
+  className="absolute top-2 right-2 p-1 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+>
+  <Heart
+    className={`w-6 h-6 transition-colors ${
+      wishlist.includes(destination.id) ? 'text-red-500' : 'text-white'
+    }`}
+  />
+</button>
+
+
                   <div>
                     <p className="text-gray-900">{destination.name}</p>
                     <p className="text-gray-500 text-sm">{destination.description}</p>
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           </div>
+
+          {/* Wishlist Display */}
+          {wishlist.length > 0 && (
+            <div className="mt-6">
+              <h3 className="text-xl font-bold mb-2">Your Wishlist</h3>
+              <div className="flex gap-4 overflow-x-auto">
+                {wishlist.map(id => {
+                  const item = featuredDestinations.find(d => d.id === id);
+                  return (
+                    <div key={id} className="w-32 flex-shrink-0">
+                      <div
+                        className="w-full h-24 bg-cover bg-center rounded-lg"
+                        style={{ backgroundImage: `url("${item.image}")` }}
+                      />
+                      <p className="text-sm text-gray-900">{item.name}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
