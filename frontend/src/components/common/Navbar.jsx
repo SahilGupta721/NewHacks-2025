@@ -27,7 +27,10 @@ function Navbar() {
                 <path clipRule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fillRule="evenodd" />
               </svg>
             </div>
-            <h2 className="font-heading text-xl font-bold leading-tight tracking-tight">CulturaCart</h2>
+            <h2 className="font-heading text-xl font-bold leading-tight tracking-tight text-white">
+  SophoTravel
+</h2>
+
           </Link>
 
           {/* Desktop Navigation */}

@@ -13,10 +13,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+  h3, h4, h5, h6 {
   font-family: 'Playfair Display', Georgia, serif;
   color: #111827;
   font-weight: 700;
+}
+h1,h2{
+  font-family: 'Playfair Display', 'Georgia, serif';
+  color: white;
+  font-weight: 700;
+}
+.text-white{
+  font-family: 'Playfair Display', Georgia, serif;
+  color:#111827;
+    font-weight: 700;
+
 }
 
 p {
