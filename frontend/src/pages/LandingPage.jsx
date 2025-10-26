@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Search } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Search, Heart } from 'lucide-react';
 import { destinations } from '../data/destinations';
 import { products } from '../data/products';
-
 
 const countries = [
   { name: 'United States', code: 'US' },
@@ -107,11 +106,17 @@ function LandingPage() {
           <div className="w-full max-w-[1280px]">
             <div
               className="p-4 min-h-[480px] flex flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-xl items-center justify-center p-8 md:p-12"
-              style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url("https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=1600")` }}
+              style={{
+                backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url("https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=1600")`
+              }}
             >
               <div className="flex flex-col gap-4 text-center text-white max-w-3xl">
-                <h1 className="text-4xl md:text-5xl font-black">Discover the Soul of Your Destination</h1>
-                <h2 className="text-lg md:text-xl font-normal">Bring Home a Piece of Culture</h2>
+                <h1 className="text-4xl md:text-5xl font-black">
+                  Discover the Soul of Your Destination
+                </h1>
+                <h2 className="text-lg md:text-xl font-normal">
+                  Bring Home a Piece of Culture
+                </h2>
               </div>
 
               {/* Search Bar */}
@@ -159,7 +164,9 @@ function LandingPage() {
       {/* Featured Destinations Section */}
       <section className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex justify-center py-5">
         <div className="w-full max-w-[1280px]">
-          <h2 className="text-gray-900 text-2xl font-bold px-4 pb-3 pt-5">Destinations to Inspire You</h2>
+          <h2 className="text-gray-900 text-2xl font-bold px-4 pb-3 pt-5">
+            Destinations to Inspire You
+          </h2>
           <div className="overflow-x-auto scrollbar-hide">
             <div className="flex items-stretch p-4 gap-4">
               {featuredDestinations.map((destination) => (
@@ -172,17 +179,18 @@ function LandingPage() {
                   </Link>
 
                   {/* Heart Icon */}
-<button
-  onClick={() => toggleWishlist(destination.id)}
-  className="absolute top-2 right-2 p-1 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
->
-  <Heart
-    className={`w-6 h-6 transition-colors ${
-      wishlist.includes(destination.id) ? 'text-red-500' : 'text-white'
-    }`}
-  />
-</button>
-
+                  <button
+                    onClick={() => toggleWishlist(destination.id)}
+                    className="absolute top-2 right-2 p-1 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+                  >
+                    <Heart
+                      className={`w-6 h-6 transition-colors ${
+                        wishlist.includes(destination.id)
+                          ? 'text-red-500'
+                          : 'text-white'
+                      }`}
+                    />
+                  </button>
 
                   <div>
                     <p className="text-gray-900">{destination.name}</p>
@@ -219,12 +227,16 @@ function LandingPage() {
       {/* Featured Products Section */}
       <section className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex justify-center py-5">
         <div className="w-full max-w-[1280px]">
-          <h2 className="text-gray-900 text-2xl font-bold px-4 pb-3 pt-5">Authentic Finds from Around the World</h2>
+          <h2 className="text-gray-900 text-2xl font-bold px-4 pb-3 pt-5">
+            Authentic Finds from Around the World
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
             {featuredProducts.map((product) => (
               <Link key={product.id} to={`/product/${product.id}`} className="group flex flex-col gap-3">
-                <div className="w-full aspect-square bg-cover bg-center rounded-lg overflow-hidden transform transition-transform duration-300 group-hover:scale-105"
-                     style={{ backgroundImage: `url("${product.thumbnail}")` }} />
+                <div
+                  className="w-full aspect-square bg-cover bg-center rounded-lg overflow-hidden transform transition-transform duration-300 group-hover:scale-105"
+                  style={{ backgroundImage: `url("${product.thumbnail}")` }}
+                />
                 <div>
                   <p className="text-gray-900">{product.name}</p>
                   <p className="text-gray-500 text-sm">By Artisan {product.artisan.name}</p>
