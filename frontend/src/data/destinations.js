@@ -22,7 +22,7 @@ export const destinations = [
     name: "Havana, Cuba",
     slug: "havana-cuba",
     description: "A city frozen in time with a vibrant soul.",
-    image: "https://images.unsplash.com/photo-1518542331925-4e0d9b4e2a48?w=800",
+    image: "https://wallpapercave.com/wp/wp9190509.jpg",
     country: "Cuba",
     featured: true
   },
