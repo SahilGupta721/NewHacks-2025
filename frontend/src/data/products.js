@@ -307,10 +307,10 @@ export const products = [
     price: 120.00,
     currency: "USD",
     images: [
-      "https://images.unsplash.com/photo-1574643156929-51fa098b0394?w=800",
+      "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=800",
       "https://images.unsplash.com/photo-1610701596061-2ecf227e85b2?w=800"
     ],
-    thumbnail: "https://images.unsplash.com/photo-1574643156929-51fa098b0394?w=400",
+    thumbnail: "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=400",
     categoryId: 1,
     category: {
       id: 1,
