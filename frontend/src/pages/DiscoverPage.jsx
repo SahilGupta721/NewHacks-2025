@@ -6,15 +6,16 @@ import { categories } from '../data/categories';
 import { artisans } from '../data/artisans';
 import { useCart } from '../context/CartContext';
 
+const MAX_PRICE = Math.ceil(Math.max(...products.map(p => p.price)) / 10) * 10;
+
 function DiscoverPage() {
   const [searchParams] = useSearchParams();
   const locationParam = searchParams.get('location');
 
   const { toggleWishlist, isInWishlist } = useCart();
 
-  // State for filters
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [priceRange, setPriceRange] = useState([0, 500]);
+  const [priceRange, setPriceRange] = useState([0, MAX_PRICE]);
   const [selectedArtisan, setSelectedArtisan] = useState('all');
   const [sortBy, setSortBy] = useState('popularity');
   const [activeTab, setActiveTab] = useState('all');
@@ -115,13 +116,13 @@ function DiscoverPage() {
                       <input
                         type="range"
                         min="0"
-                        max="500"
+                        max={MAX_PRICE}
                         step="10"
                         value={priceRange[1]}
                         onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
                         className="w-full h-2 rounded-lg appearance-none cursor-pointer price-range-slider"
                         style={{
-                          background: `linear-gradient(to right, #C97C5D 0%, #C97C5D ${(priceRange[1] / 500) * 100}%, #F2E8D5 ${(priceRange[1] / 500) * 100}%, #F2E8D5 100%)`
+                          background: `linear-gradient(to right, #C97C5D 0%, #C97C5D ${(priceRange[1] / MAX_PRICE) * 100}%, #F2E8D5 ${(priceRange[1] / MAX_PRICE) * 100}%, #F2E8D5 100%)`
                         }}
                       />
                     </div>
@@ -245,7 +246,7 @@ function DiscoverPage() {
                   <button
                     onClick={() => {
                       setSelectedCategories([]);
-                      setPriceRange([0, 500]);
+                      setPriceRange([0, MAX_PRICE]);
                       setSelectedArtisan('all');
                       setActiveTab('all');
                     }}
