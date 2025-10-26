@@ -9,7 +9,7 @@ function Navbar() {
 
   const navLinks = [
     { path: '/discover', label: 'Destinations' },
-    { path: '/map', label: 'Artisans' },
+    /*{ path: '/map', label: 'Artisans' },*/
     { path: '/stories', label: 'About' },
     { path: '/support', label: 'Contact' },
   ];
